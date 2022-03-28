@@ -1,0 +1,36 @@
+﻿create table Products
+(
+	ProductId int primary key,
+	ProductName nvarchar(128) not null,
+	ProductPrice int not null
+)
+
+insert into Products(ProductId, ProductName, ProductPrice) values (1, 'Телевизор LG', 20000)
+insert into Products(ProductId, ProductName, ProductPrice) values (2, 'Телевизор Samsung', 22000)
+insert into Products(ProductId, ProductName, ProductPrice) values (3, 'Телефон Nokia', 7500)
+insert into Products(ProductId, ProductName, ProductPrice) values (4, 'Игровое кресло', 1000)
+
+create table Categorys
+(
+	CategoryId int primary key,
+	CategoryName nvarchar(128) not null
+)
+
+-- Заполним таблицу Position данными.
+insert into Categorys(CategoryId, CategoryName) values(1, 'Техника')
+insert into Categorys(CategoryId, CategoryName) values(2, 'Телевизоры')
+insert into Categorys(CategoryId, CategoryName) values(3, 'Телефоны')
+
+create table ProductsCategorys
+(
+	CategoryId int foreign key references Categorys(CategoryId),
+	ProductId int foreign key references Products(ProductId),
+	primary key(CategoryId, ProductId)
+)
+
+insert into ProductsCategorys(ProductId, CategoryId) values (1, 1)
+insert into ProductsCategorys(ProductId, CategoryId) values (1, 2)
+insert into ProductsCategorys(ProductId, CategoryId) values (2, 1)
+insert into ProductsCategorys(ProductId, CategoryId) values (2, 2)
+insert into ProductsCategorys(ProductId, CategoryId) values (3, 3)
+

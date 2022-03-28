@@ -1,0 +1,6 @@
+﻿SELECT Products.ProductName, Categorys.CategoryName FROM Products
+FULL OUTER  JOIN ProductsCategorys
+    ON Products.ProductId = ProductsCategorys.ProductId
+  FULL OUTER  JOIN Categorys
+    ON ProductsCategorys.CategoryId=Categorys.CategoryId
+	 
